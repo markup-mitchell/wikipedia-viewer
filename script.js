@@ -9,7 +9,7 @@ let controller = {
     this.inputField.addEventListener('keypress', function(e) {
         let key = e.which || e.keyCode; // what is this???:w
         if (key === 13) {
-          controller.captureInput()
+          controller.submitQuery()
         }
     });
     this.inputField.addEventListener('input', this.trackInput);
@@ -24,9 +24,15 @@ let controller = {
     console.log(data.currentInput);
   },
 
-  captureInput() {
+  submitQuery() {
     console.log(data.currentInput);
-    
+    controller.generateQuery();
+  },
+
+  generateQuery() {
+    let searchTerms = data.currentInput;
+    searchTerms = searchTerms.replace(/ /g, '%20');
+    console.log(searchTerms);
   }
 
 
