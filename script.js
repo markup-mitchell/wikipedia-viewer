@@ -30,9 +30,15 @@ let controller = {
   },
 
   generateQuery() {
+    var proxyCORS = "https://cors-anywhere.herokuapp.com/";
     let searchTerms = data.currentInput;
     searchTerms = searchTerms.replace(/ /g, '%20');
     console.log(searchTerms);
+    fetch(proxyCORS + `https://en.wikipedia.org/w/api.php?action=query&titles=${searchTerms}&prop=revisions&rvprop=content&format=json`).then(function(response){
+      return response.blob()
+    }).then(function(myBlob) {
+      console.log(myBlob)
+    })
   }
 
 
