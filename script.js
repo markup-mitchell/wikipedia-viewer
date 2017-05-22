@@ -25,6 +25,11 @@ let controller = {
   },
 
   submitQuery() {
+    // THIS is how I should do it:
+    // let apiQuery = generateQuery();
+    // let responseObj = submitQuery(apiQuery);
+    // let searchResults = responseObj.query.search; [array]
+    // view.render(searchResults);
     console.log(data.currentInput);
     controller.generateQuery();
   },
