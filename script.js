@@ -19,7 +19,6 @@ let controller = {
   },
 
   trackInput(e) {
-    // let currentInput = e.target.value;
     data.currentInput = e.target.value;
     console.log(data.currentInput);
   },
@@ -29,7 +28,7 @@ let controller = {
     this.sendQuery(apiQuery).then(function(response) {
       console.log(response);
       let resultsObj = JSON.parse(response);
-      view.render(resultsObj.query.search);
+      view.render(resultsObj.query.search); // should send the results to data, actually, then call an update function to pass it to view.render
     });
   },
 
