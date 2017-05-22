@@ -28,8 +28,8 @@ let controller = {
     let apiQuery = this.generateQuery();
     this.sendQuery(apiQuery).then(function(response) {
       console.log(response);
-      let results = JSON.parse(response);
-      view.render(results);
+      let resultsObj = JSON.parse(response);
+      view.render(resultsObj.query.search);
     });
   },
 
@@ -63,7 +63,12 @@ let controller = {
 let view = {
   // move as much html in here as makes sense
   render(results) {
-    console.log("RENDER FUNCTION RUNS ON: " + results);
+    // console.log("first result: " + results[0].snippet);
+    let x = document.createElement('div');
+    let y = document.createTextNode(results[1].snippet); 
+    x.appendChild(y);
+    document.getElementById('resultsBox').appendChild(x);
+
   }
 }
 
