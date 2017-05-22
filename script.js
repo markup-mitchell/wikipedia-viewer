@@ -25,55 +25,46 @@ let controller = {
   },
 
   submitQuery() {
-    // THIS is how I should do it:
-    // let apiQuery = generateQuery();
-    // let responseObj = submitQuery(apiQuery);
-    // let searchResults = responseObj.query.search; [array]
-    // view.render(searchResults);
-    console.log(data.currentInput);
-    controller.generateQuery();
+    let apiQuery = this.generateQuery();
+    this.sendQuery(apiQuery).then(function(response) {
+      console.log(response);
+      let results = JSON.parse(response);
+      view.render(results);
+    });
   },
 
-  generateQuery() { // not separating the generate query from send query feels like a mistake
-    var proxyCORS = "https://cors-anywhere.herokuapp.com/";
-    let searchTerms = data.currentInput;
-    searchTerms = searchTerms.replace(/ /g, '%20');
-    console.log(searchTerms);
-    let xhrRequest = function() {
+  generateQuery() {
+    let proxyCORS = "https://cors-anywhere.herokuapp.com/";
+    let searchTerms = data.currentInput.replace(/ /g, '%20');
+    return proxyCORS + `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${searchTerms}&format=json&utf8=`; 
+  },
+
+  sendQuery(apiQuery) { 
+    return new Promise(function(resolve,reject) {
         let xhr = new XMLHttpRequest();
-        // xhr.open('GET', proxyCORS + `https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro=&explaintext=&titles=${searchTerms})`);
-        xhr.open('GET', proxyCORS + `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${searchTerms}&format=json&utf8=`);
+        xhr.open('GET', apiQuery);
         xhr.send(null);
         xhr.onload = function() {
             if (xhr.status === 200) {
-                var responseObj = JSON.parse(xhr.response);
-                console.log(responseObj.query.search);
-            }
-            else if (xhr.status === 404) {
-                console.log('Error, page not found');
+              // console.log(xhr.response);
+                resolve(xhr.response);
             }
             else {
-                console.log('Error, status code: ' + xhr.status);
-            }
+                reject(Error(xhr.status));
+            };
         }
-    }
-  console.log(xhrRequest()); 
-    // fetch(proxyCORS + `https://en.wikipedia.org/w/api.php?action=query&titles=${searchTerms}&prop=revisions&rvprop=content&format=json`).then(function(response){
-    //   return response
-    // }).then(function(response) {
-    //   console.log(response)
-    // })
+      xhr.send
+    })
   },
-
-parseResults(responseObj) {}
-
-
 
 
 }
 
 let view = {
   // move as much html in here as makes sense
+  render(results) {
+    console.log("RENDER FUNCTION RUNS ON: " + results);
+  }
 }
 
 controller.init();
