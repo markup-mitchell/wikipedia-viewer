@@ -1,6 +1,11 @@
+- add hyperlinks to results
+- add random page functionality
 - handle blank searches
+- clear search bar after search
 - store returned API data in data until needed for rendering
 - clear previous results when new search is returned
-- add random page functionality
 - get decent fonts
-- clear search bar after search
+- make screen fit in viewport (xps)
+- test on mobile
+- results styling? 
+- remove highlight box (but consider accessibility)
