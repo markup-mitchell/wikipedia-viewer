@@ -29,6 +29,8 @@ let controller = {
       console.log(response);
       let resultsObj =  JSON.parse(response);
       view.render(resultsObj); // should send the results to data, actually, then call an update function to pass it to view.render
+      data.currentInput = '';
+      document.getElementById('inputField').value = data.currentInput;
     });
   },
 

@@ -6,7 +6,7 @@
 - clear previous results when new search is returned
 - get decent fonts
 - make screen fit in viewport (xps)
-- test on mobile
+- mobile breakpoints
 - results styling? 
 - remove highlight box (but consider accessibility)
 - add a 'please wait' / 'searching' message?
