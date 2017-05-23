@@ -63,11 +63,32 @@ let controller = {
 let view = {
   // move as much html in here as makes sense
   render(results) {
-    // console.log("first result: " + results[0].snippet);
-    let x = document.createElement('div');
-    let y = document.createTextNode(results[0]); 
-    x.appendChild(y);
-    document.getElementById('resultsBox').appendChild(x);
+    let resNames = results[1]; // all this should be parsed into data object!
+    let resSummaries = results[2];
+    let resUrls = results[3];
+    
+    for (i=0;i<resNames.length;i++){
+      let result = document.createElement('div');
+      let titleHead = document.createElement('h2');
+      let titleText = document.createTextNode(resNames[i]);
+      let summary = document.createTextNode(resSummaries[i])
+      titleHead.appendChild(titleText);
+      result.appendChild(titleHead);
+      result.appendChild(summary);
+      document.getElementById('resultsBox').appendChild(result);
+    };
+    
+    // resNames.map(function(name) { 
+    //   let result = document.createElement('div');
+    //   let titleHead = document.createElement('h2');
+    //   let titleText = document.createTextNode(name);
+
+    // });
+
+    // let x = document.createElement('div');
+    // let y = document.createTextNode(results[0]); 
+    // x.appendChild(y);
+    // document.getElementById('resultsBox').appendChild(x);
 
   }
 }
