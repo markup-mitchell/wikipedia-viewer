@@ -1,7 +1,7 @@
 
 let data = {
   // API data send here
-}
+},
 
 let controller = {
   init() {
