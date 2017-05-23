@@ -27,15 +27,16 @@ let controller = {
     let apiQuery = this.generateQuery();
     this.sendQuery(apiQuery).then(function(response) {
       console.log(response);
-      let resultsObj = JSON.parse(response);
-      view.render(resultsObj.query.search); // should send the results to data, actually, then call an update function to pass it to view.render
+      let resultsObj =  JSON.parse(response);
+      view.render(resultsObj); // should send the results to data, actually, then call an update function to pass it to view.render
     });
   },
 
   generateQuery() {
     let proxyCORS = "https://cors-anywhere.herokuapp.com/";
     let searchTerms = data.currentInput.replace(/ /g, '%20');
-    return proxyCORS + `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${searchTerms}&format=json&utf8=`; 
+    return proxyCORS + `https://en.wikipedia.org/w/api.php?action=opensearch&search=${searchTerms}`; 
+    // return proxyCORS + `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${searchTerms}&format=json&utf8=`; 
   },
 
   sendQuery(apiQuery) { 
@@ -64,7 +65,7 @@ let view = {
   render(results) {
     // console.log("first result: " + results[0].snippet);
     let x = document.createElement('div');
-    let y = document.createTextNode(results[1].snippet); 
+    let y = document.createTextNode(results[0]); 
     x.appendChild(y);
     document.getElementById('resultsBox').appendChild(x);
 
