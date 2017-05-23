@@ -1,1 +1,5 @@
 - handle blank searches
+- store returned API data in data until needed for rendering
+- clear previous results when new search is returned
+- add random page functionality
+- get decent fonts

@@ -39,3 +39,15 @@ body {
   padding: 10px;
   margin: 10px;
 }
+
+#resultsBox {
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+}
+
+#resultsBox div {
+  background: pink;
+  margin: 10px;
+  padding: 10px;
+}
