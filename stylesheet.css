@@ -31,7 +31,7 @@ h2 {
   color: #56f;
 }
 
-.mainButton {
+#mainButton {
   border: none;
   border-radius: 5px;
   background: #56f;
