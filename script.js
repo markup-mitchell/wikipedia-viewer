@@ -75,11 +75,15 @@ let view = { // move as much html in here as makes sense
     
     for (i=0; i < this.resNames.length; i++){
       let result = document.createElement('div');
-      let titleHead = document.createElement('h2');
+      let titleHead = document.createElement('a');
       let titleText = document.createTextNode(this.resNames[i]);
       let summary = document.createTextNode(this.resSummaries[i])
-      titleHead.appendChild(titleText);
+      titleHead.href = this.resUrls[i];
+      titleHead.setAttribute('target', '_blank');
+      titleHead.appendChild(titleText)
       result.appendChild(titleHead);
+      result.appendChild(document.createElement('br'));
+      result.appendChild(document.createElement('br'));
       result.appendChild(summary);
       result.appendChild(document.createElement('hr'));
       this.resultsBox.appendChild(result);
