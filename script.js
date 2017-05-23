@@ -1,7 +1,7 @@
 
 let data = {
   // API data send here
-},
+}
 
 let controller = {
   init() {
@@ -13,8 +13,7 @@ let controller = {
         }
     });
     this.inputField.addEventListener('input', this.trackInput);
-    this.randomButton = document.getElementById('mainButton');
-    // this.randomButton.addEventListener('click', this.getRandom);
+    document.getElementById('mainButton').addEventListener('click', this.openRandom);
     view.init();
   },
 
@@ -59,11 +58,13 @@ let controller = {
     })
   },
 
-
+  openRandom() {
+    var win = window.open('https://en.wikipedia.org/wiki/Special:Random', '_blank');
+    win.focus();
+  }
 }
 
-let view = {
-  // move as much html in here as makes sense
+let view = { // move as much html in here as makes sense
   init() {
     this.resultsBox = document.getElementById('resultsBox');
   },
