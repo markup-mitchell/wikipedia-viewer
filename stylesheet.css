@@ -3,7 +3,6 @@ h1 {
 }
 
 body {
-  /*background: #eeb;*/
   padding: 0;
   margin: 0;
 }
@@ -17,7 +16,6 @@ body {
   align-items: center;
   justify-content: center;
   /*background: #f5e0b1;*/
-  border: solid #f00;
 }
 
 #inputField {
@@ -43,11 +41,12 @@ body {
 #resultsBox {
   display: flex;
   flex-direction: column;
-  width: 60vw;
+  width: 51vw;
 }
 
 #resultsBox div {
-  background: pink;
-  margin: 10px;
-  padding: 10px;
+  /*background: #56f;*/
+  color: #56f;
+  /*margin: 10px;*/
+  /*padding: 10px;*/
 }

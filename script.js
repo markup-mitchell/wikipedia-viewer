@@ -75,6 +75,7 @@ let view = {
       titleHead.appendChild(titleText);
       result.appendChild(titleHead);
       result.appendChild(summary);
+      result.appendChild(document.createElement('hr'));
       document.getElementById('resultsBox').appendChild(result);
     };
     
